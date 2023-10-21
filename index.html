@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .calculator label, .calculator input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .calculator input {
+            width: 100%;
+            padding: 5px;
+        }
+        .calculator button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculator button:hover {
+            background-color: #0056b3;
+        }
+        #hasil {
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Sales Calculator</h1>
+        
+        <label for="customers">Number of Customers:</label>
+        <input type="number" id="customers" placeholder="Enter Number of Customers" step="1">
+        
+        <label for="aov">Average Order Value (AOV) (RM):</label>
+        <input type="number" id="aov" placeholder="Enter AOV" step="0.01">
+        
+        <label for="repeat">Number of Repeat Purchases:</label>
+        <input type="number" id="repeat" placeholder="Enter Number of Repeat Purchases" step="1">
+        
+        <button onclick="calculateSales()">Calculate Sales</button>
+        
+        <div id="hasil"></div>
+    </div>
+
+    <script>
+        const customersInput = document.getElementById('customers');
+        const aovInput = document.getElementById('aov');
+        const repeatInput = document.getElementById('repeat');
+        const hasilDiv = document.getElementById('hasil');
+
+        function calculateSales() {
+            const customers = parseFloat(customersInput.value) || 0;
+            const aov = parseFloat(aovInput.value) || 0;
+            const repeat = parseFloat(repeatInput.value) || 0;
+
+            const sales = customers * aov * repeat;
+
+            hasilDiv.innerHTML = `Sales: RM ${sales.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
